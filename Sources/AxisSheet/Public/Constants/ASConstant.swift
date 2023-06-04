@@ -56,7 +56,7 @@ public struct ASConstant: Equatable {
     
     /// The component background status information.
     public var background: ASBackgroundConstant
-    public var showBluredBg: Bool = false
+    public var showBluredBg: Bool
     
     /// Initializes `ASConstant`
     /// - Parameters:
@@ -69,11 +69,12 @@ public struct ASConstant: Equatable {
                 size: CGFloat = 200,
                 presentationMode: ASPresentationMode = .minimize,
                 header: ASHeaderConstant = .init(),
-                background: ASBackgroundConstant = .init()) {
+                background: ASBackgroundConstant = .init(), showBluredBg: Bool = false) {
         self.axisMode = axisMode
         self.size = size
         self.presentationMode = presentationMode
         self.header = header
         self.background = background
+        self.showBluredBg = showBluredBg
     }
 }

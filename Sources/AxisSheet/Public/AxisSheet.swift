@@ -209,16 +209,16 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
                                 }
             }
             getContent(background.color)
-                .frame(
-                      minWidth: 0,
-                      maxWidth: .infinity,
-                      minHeight: 0,
-                      maxHeight: .infinity,
-                      alignment: .topLeading
-                    )
+                
                 .animation(.axisSheetAnimation, value: isPresented)
         }
-        
+        .frame(
+              minWidth: 0,
+              maxWidth: .infinity,
+              minHeight: 0,
+              maxHeight: .infinity,
+              alignment: .topLeading
+            )
         .animation(.axisSheetAnimation, value: alpha)
         
         .clipped()

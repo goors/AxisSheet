@@ -208,7 +208,7 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
                                     isPresented = false
                                 }
             }
-            getContent(background.color)
+            getContent(background.color).animation(.axisSheetAnimation, value: isPresented)
         }
         
         .animation(.axisSheetAnimation, value: alpha)

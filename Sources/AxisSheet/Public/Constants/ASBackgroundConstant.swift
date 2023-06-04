@@ -30,6 +30,7 @@ public struct ASBackgroundConstant: Equatable {
     
     /// The translucent background color of the component.
     public var color: Color
+    public var blurColor: Color
     
     /// Disable the background.
     public var disabled: Bool
@@ -38,9 +39,10 @@ public struct ASBackgroundConstant: Equatable {
     /// - Parameters:
     ///   - color: The translucent background color of the component. The default value is `.black.opacity(0.3)`
     ///   - disabled: Disable the background. The default value is `false`
-    public init(color: Color = .black.opacity(0.3), disabled: Bool = false) {
+    public init(color: Color = .black.opacity(0.3), blurColor: Color: .black.opacity(0.3), disabled: Bool = false) {
         self.color = color
         self.disabled = disabled
+        self.blurColor = blurColor
     }
 }
 

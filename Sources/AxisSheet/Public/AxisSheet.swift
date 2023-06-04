@@ -194,36 +194,34 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
     }
     
     public var body: some View {
-        if(isPresented) {
-            let background = constants.background
-            ZStack {
-                
-                if (constants.showBluredBg) {
-                    background.blurColor
-                        .opacity(background.disabled ? 0 : alpha)
-                        .edgesIgnoringSafeArea(.all)
-                        .animation(.linear(duration: 0.2), value: offset)
-                        .animation(.linear(duration: 0.2), value: background.disabled)
-                        .highPriorityGesture(dragGesture)
-                        .onTapGesture {
-                            isPresented = false
-                        }
-                }
-                getContent(background.color)
-                
-                    .animation(.axisSheetAnimation, value: isPresented)
-            }
-            .frame(
-                minWidth: 0,
-                maxWidth: .infinity,
-                minHeight: 0,
-                maxHeight: .infinity,
-                alignment: .topLeading
-            )
-            .animation(.axisSheetAnimation, value: alpha)
+        let background = constants.background
+        ZStack {
             
-            .clipped()
+            if (constants.showBluredBg) {
+                background.blurColor
+                    .opacity(background.disabled ? 0 : alpha)
+                    .edgesIgnoringSafeArea(.all)
+                    .animation(.linear(duration: 0.2), value: offset)
+                    .animation(.linear(duration: 0.2), value: background.disabled)
+                    .highPriorityGesture(dragGesture)
+                    .onTapGesture {
+                        isPresented = false
+                    }
+            }
+            getContent(background.color)
+            
+                .animation(.axisSheetAnimation, value: isPresented)
         }
+        .frame(
+            minWidth: 0,
+            maxWidth: .infinity,
+            minHeight: 0,
+            maxHeight: .infinity,
+            alignment: .topLeading
+        )
+        .animation(.axisSheetAnimation, value: alpha)
+        
+        .clipped()
     }
     
     //MARK: - method

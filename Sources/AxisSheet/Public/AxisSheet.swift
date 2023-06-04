@@ -163,7 +163,7 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
             }
         }
         .clipShape(cornerShape)
-        .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 0)
+        
         .highPriorityGesture(dragGesture)
         .opacity(constants.presentationMode == .minimize ? 1 : alpha == 0 ? 0 : 1)
         .onTapGesture {
@@ -196,15 +196,7 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
     public var body: some View {
         let background = constants.background
         ZStack {
-            background.color
-                .opacity(background.disabled ? 0 : alpha)
-                .edgesIgnoringSafeArea(.all)
-                .animation(.linear(duration: 0.2), value: offset)
-                .animation(.linear(duration: 0.2), value: background.disabled)
-                .highPriorityGesture(dragGesture)
-                .onTapGesture {
-                    isPresented = false
-                }
+            
             getContent()
                 .animation(.axisSheetAnimation, value: isPresented)
         }
@@ -308,8 +300,13 @@ public extension AxisSheet where Header : View, Content : View {
 
 struct AxisSheet_Previews: PreviewProvider {
     static var previews: some View {
-        AxisSheet(isPresented: .constant(true)) {
-            Text("AxisSheet")
+        VStack {
+            VStack {
+                Text("Hello")
+            }
+            .frame(height: 500)
+            .axisSheet(isPresented: .constant(true))
         }
+        
     }
 }

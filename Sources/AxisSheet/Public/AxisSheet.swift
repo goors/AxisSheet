@@ -198,11 +198,11 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
         ZStack {
             
             getContent()
-                
+                .background(background.color)
                 .animation(.axisSheetAnimation, value: isPresented)
                 
         }
-        .background(background.color)
+        
         .animation(.axisSheetAnimation, value: alpha)
         
         .clipped()

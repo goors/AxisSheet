@@ -198,7 +198,7 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
         ZStack {
 
             if (constants.showBluredBg) {
-                background.color
+                background.blurColor
                                 .opacity(background.disabled ? 0 : alpha)
                                 .edgesIgnoringSafeArea(.all)
                                 .animation(.linear(duration: 0.2), value: offset)

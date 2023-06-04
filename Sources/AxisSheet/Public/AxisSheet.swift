@@ -197,9 +197,9 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
         let background = constants.background
         ZStack {
             
-            getContent()
-                .background(background.color)
-                .animation(.axisSheetAnimation, value: isPresented)
+            getContent(background.color)
+                
+                
                 
         }
         
@@ -211,7 +211,7 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
     //MARK: - method
     /// Returns a content view according to the `ASAxisMode`.
     /// - Returns: A content view.
-    private func getContent() -> some View {
+    private func getContent(_ bg: Color) -> some View {
         let contentSize = constants.size + constants.header.size
         return GeometryReader { proxy in
             switch constants.axisMode {
@@ -227,6 +227,7 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
                 VStack(spacing: 0) {
                     self.headerView
                     self.contentView
+                        .background(bg)
                 }
                 .frame(width: proxy.size.width, height: contentSize)
                 .frame(height: proxy.size.height, alignment: .bottom)

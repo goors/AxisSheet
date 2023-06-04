@@ -211,7 +211,7 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
             getContent(background.color)
             
                 .animation(.axisSheetAnimation, value: isPresented)
-                .opacity(isPresented ? 1 : 0)
+                // .opacity(isPresented ? 1 : 0)
         }
         .frame(
             minWidth: 0,

@@ -196,11 +196,19 @@ public struct AxisSheet<Header, Content>: View where Header: View, Content: View
     public var body: some View {
         let background = constants.background
         ZStack {
-            
+
+            if (constants.showBluredBg) {
+                background.color
+                                .opacity(background.disabled ? 0 : alpha)
+                                .edgesIgnoringSafeArea(.all)
+                                .animation(.linear(duration: 0.2), value: offset)
+                                .animation(.linear(duration: 0.2), value: background.disabled)
+                                .highPriorityGesture(dragGesture)
+                                .onTapGesture {
+                                    isPresented = false
+                                }
+            }
             getContent(background.color)
-                
-                
-                
         }
         
         .animation(.axisSheetAnimation, value: alpha)

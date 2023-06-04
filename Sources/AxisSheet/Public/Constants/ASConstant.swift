@@ -56,6 +56,7 @@ public struct ASConstant: Equatable {
     
     /// The component background status information.
     public var background: ASBackgroundConstant
+    public var showBluredBg: Bool = false
     
     /// Initializes `ASConstant`
     /// - Parameters:
